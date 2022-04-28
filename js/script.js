@@ -37,17 +37,23 @@ setTimeout(numberPrompts, count * 1000 + 100);
 //chiedere all'utente 5 numeri attraverso altrettanti prompt
 function numberPrompts() {
   let userNumbers = [];
-  if (userNumbers.length < 5) {
-    const userNumber = parseInt(prompt("dimmi un numero che ricordi"));
-    userNumbers.push(userNumber);
+  for (let i = 0; i < 5; i++) {
+    if (userNumbers.length < 5) {
+      const userNumber = parseInt(prompt("dimmi un numero che ricordi"));
+      userNumbers.push(userNumber);
+    } else {
+      checkResult(rndNumbers, userNumbers);
+    }
   }
   console.log(userNumbers);
-} else {
-  checkResult(rndNumbers, userNumbers)
 }
 
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 function checkResult() {
+  const matchesArray = rndNumbers.filter((value) =>
+    userNumbers.includes(value)
+  );
+  console.log(matchesArray);
   //prelevare userNumbers e rndNumbers
   //creare array con match
   //stampare quanti e quali numeri matchano
